@@ -81,7 +81,13 @@ function App() {
   }) => {
     setLoading(true);
     const res = await axios.get(
-      `https://opentdb.com/api.php?amount=${amount}&difficulty=${difficulties}&category=${categories}`
+      `https://opentdb.com/api.php`,{
+        params: {
+          amount,
+          difficulty: difficulties, 
+          category: categories,
+        },
+      }
     );
     const formatQuestion = res?.data?.results.map((item: any) => ({
       ...item,
