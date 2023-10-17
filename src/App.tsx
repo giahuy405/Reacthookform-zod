@@ -210,7 +210,7 @@ function App() {
               {currentQuestion?.questionTotal?.map((item, index) => (
                 <div
                   key={index}
-                  onClick={(e) => {
+                  onClick={() => {
                     setAnwserQuestion(item);
                     setClassIndex(+index);
                   }}
