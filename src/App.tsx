@@ -13,7 +13,9 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { shuffle } from "lodash";
+// import { shuffle } from "lodash";
+import _shuffle from 'lodash/shuffle';
+
 import { FormatQuestion } from "./types/data.types";
 const CATEGORIES = [
   {
@@ -91,7 +93,7 @@ function App() {
     );
     const formatQuestion = res?.data?.results.map((item: any) => ({
       ...item,
-      questionTotal: shuffle([...item.incorrect_answers, item.correct_answer]),
+      questionTotal: _shuffle([...item.incorrect_answers, item.correct_answer]),
     }));
     console.log(formatQuestion);
     setQuestion(formatQuestion || []);
