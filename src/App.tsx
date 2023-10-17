@@ -17,6 +17,7 @@ import "react-toastify/dist/ReactToastify.css";
 import _shuffle from 'lodash/shuffle';
 
 import { FormatQuestion } from "./types/data.types";
+import clsx from "clsx";
 const CATEGORIES = [
   {
     label: "Sports",
@@ -115,15 +116,7 @@ function App() {
       setScore((prev) => prev + 10);
       toast.success("Correct!", {
         position: "top-left",
-        autoClose: 2000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        theme: "light",
-      });
-      toast.success(`+ 10 points`, {
-        position: "bottom-center",
-        autoClose: 2000,
+        autoClose: 1000,
         hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
@@ -132,7 +125,7 @@ function App() {
     } else {
       toast.error("Incorrect!", {
         position: "top-left",
-        autoClose: 2000,
+        autoClose: 1000,
         hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
@@ -222,9 +215,13 @@ function App() {
                     setAnwserQuestion(item);
                     setClassIndex(+index);
                   }}
-                  className={` p-3 shadow-sm rounded-lg hover:bg-orange-300 cursor-pointer ${
-                    +index === indexClass ? "bg-orange-300" : "bg-white"
-                  }`}
+                  // className={` p-3 shadow-sm rounded-lg hover:bg-orange-300 cursor-pointer ${
+                  //   +index === indexClass ? "bg-orange-300" : "bg-white"
+                  // }`}
+                  className={clsx(`p-3 shadow-sm rounded-lg hover:bg-orange-300 cursor-pointer `,{
+                    'bg-orange-300': +index === indexClass,
+                    'bg-white': +index !== indexClass,
+                  })}
                 >
                   {item}
                 </div>
